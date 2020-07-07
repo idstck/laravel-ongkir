@@ -63,6 +63,9 @@
                             <label for="">Provinsi</label>
                             <select name="origin_province" id="" class="form-control">
                                 <option value="#">-</option>
+                                @foreach ($province as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">

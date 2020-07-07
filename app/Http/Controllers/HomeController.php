@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Province;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $province = $this->getProvince();
+        return view('home', compact('province'));
+    }
+
+    public function getProvince()
+    {
+        return Province::pluck('title', 'code');
     }
 }
