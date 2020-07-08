@@ -77,7 +77,7 @@
                         <h5 class="text-muted">Tujuan Pengirim:</h5>
                         <div class="form-group">
                             <label for="">Kota/Kabupaten</label>
-                            <select name="destination_city" id="" class="form-control">
+                            <select name="destination_city" id="destination_city" class="form-control">
                                 <option value="#">-</option>
                             </select>
                         </div>

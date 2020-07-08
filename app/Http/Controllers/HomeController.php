@@ -38,4 +38,34 @@ class HomeController extends Controller
     {
         return City::where('province_code', $id)->pluck('title', 'code');
     }
+
+    public function searchCities(Request $request)
+    {
+        $search = $request->search;
+
+        if (empty($search)) {
+            $cities = City::orderBy('title', 'asc')
+                ->select('id', 'title')
+                ->limit(5)
+                ->get();
+        } else {
+            $cities = City::orderBy('title', 'asc')
+                ->where('title', 'like', '%' . $search . '%')
+                ->select('id', 'title')
+                ->limit(5)
+                ->get();
+        }
+
+        $response = [];
+
+        foreach ($cities as $city) {
+            $response[] = [
+                'id' => $city->id,
+                'text' => $city->title
+            ];
+        }
+
+
+        return json_encode($response);
+    }
 }
