@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\Courier;
 use App\Province;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,18 @@ class HomeController extends Controller
     public function index()
     {
         $province = $this->getProvince();
-        return view('home', compact('province'));
+        $courier = $this->getCourier();
+        return view('home', compact('province', 'courier'));
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+    }
+
+    public function getCourier()
+    {
+        return Courier::all();
     }
 
     public function getProvince()
